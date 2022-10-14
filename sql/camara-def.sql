@@ -100,3 +100,42 @@ CREATE TABLE orgao_realiza_evento(
 		REFERENCES orgao(id),
     CONSTRAINT pk_org_rea_eve PRIMARY KEY(id_evento, id_org)
 );
+
+CREATE TABLE evento_requer_aprovacao(
+    id_evento INT,
+    id_requerimento INT,
+    CONSTRAINT fk_eve_evereqapro FOREIGN KEY(id_evento)
+		REFERENCES evento(id),
+    CONSTRAINT fk_req_evereqapro FOREIGN KEY(id_requerimento)
+		REFERENCES requerimento(id),
+    CONSTRAINT pk_eve_req_apro PRIMARY KEY(id_evento, id_requerimento)
+);
+
+CREATE TABLE deputado_participa_evento(
+    id_dep INT,
+    id_evento INT,
+    CONSTRAINT fk_eve_depparteve FOREIGN KEY(id_evento)
+		REFERENCES evento(id),
+    CONSTRAINT fk_dep_depparteve FOREIGN KEY(id_dep)
+		REFERENCES deputado(id_dep),
+    CONSTRAINT pk_dep_part_eve PRIMARY KEY(id_dep, id_evento)
+);
+
+CREATE TABLE votacao(
+    id_votacao VARCHAR(25),
+    data_votacao DATE,
+    id_org INT,
+    aprovacao INT,
+    votos_favor INT,
+    votos_contra INT,
+    desc_resultado VARCHAR(10000),
+    ultima_apresentacao_requerimento_descricao VARCHAR(10000), 
+    id_requerimento INT,
+    CONSTRAINT fk_req_vot FOREIGN KEY(id_requerimento)
+		REFERENCES requerimento(id), 
+    CONSTRAINT fk_org_vot FOREIGN KEY(id_org)
+        REFERENCES orgao(id),
+    CONSTRAINT ck_aprov CHECK (aprovacao IN (0,1)),
+    CONSTRAINT ck_votos CHECK ((votos_favor >= 0) AND (votos_contra >= 0)),
+    CONSTRAINT pk_votacao PRIMARY KEY(id_votacao)
+)
