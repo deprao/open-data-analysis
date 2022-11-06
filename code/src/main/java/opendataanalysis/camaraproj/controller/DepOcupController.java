@@ -20,6 +20,6 @@ public class DepOcupController {
     public String listarDepsOcupacoes(Model mod){
         mod.addAttribute("depsocups", dao.findAll());
 
-        return "depsocups";
+        return "deputado-ocupacao";
     }
 }

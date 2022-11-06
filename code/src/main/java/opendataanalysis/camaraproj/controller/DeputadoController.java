@@ -20,6 +20,6 @@ public class DeputadoController {
     public String listarDeputados(Model mod){
         mod.addAttribute("deputados", dao.findAll());
 
-        return "listdeputado";
+        return "listdeputados";
     }
 }

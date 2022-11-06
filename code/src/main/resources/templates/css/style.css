@@ -23,11 +23,40 @@ body{
     align-items: center;
     justify-content: center;
     padding-top:10%;
+    flex-direction: column;
 }
 
 input[type="file"] {
-    display: none;
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    color: #Fff;
+    margin-bottom: 10px;
 }
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 10px;
+    background-color: #4E4E4E;
+    border-radius: 25px;
+    border: none;
+    transition: .3s;
+    color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover{
+    padding: 10px;
+    background-color: #2E2E2E;
+    border-radius: 25px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: .3s;
+}
+
+
 
 label {
     padding: 20px 10px;

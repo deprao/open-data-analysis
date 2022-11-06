@@ -1,5 +1,4 @@
 package opendataanalysis.camaraproj.dao;
-;
 import opendataanalysis.camaraproj.models.DepProfissao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
