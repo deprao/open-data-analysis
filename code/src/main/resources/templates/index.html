@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="João Paulo C. de Souza, Pedro W. Hernandes">
+    <title>Trabalho de Banco de Dados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+<!--    <link href="css/style.css" rel="stylesheet" type="text/css"/>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="bodyHome">
+    <h1 class="homeSubtitle">
+        Projeto Câmara dos Deputados
+        <div class="colorsHeader">
+            <div class="colorHeader" style="background-color: #ffdf00"></div>
+            <div class="colorHeader" style="background-color: #009c3b"></div>
+            <div class="colorHeader" style="background-color: #002776"></div>
+        </div>
+    </h1>
+
+    <div class="people">
+        <div class="contentPeople">
+            <text class="identificacao">
+                Professor
+            </text>
+            <text class="nome">
+                Daniel S. Kaster
+            </text>
+        </div>
+        <div class="contentPeople">
+            <text class="identificacao">
+                Alunos
+            </text>
+            <text class="nome">
+                João Paulo C. de Souza e Pedro W. Hernandes
+            </text>
+        </div>
+    </div>
+
+    <a href="./listdeputados">
+        <button class="btnSend">
+            Acessar dados
+        </button>
+    </a>
+</div>
+</body>
+
+<style>
+    body{
+        margin: 0;
+        background: #222;
+        /* background: linear-gradient(120deg, rgba(0,0,0,1) 0%, rgba(51,51,51,1) 100%); */
+        padding: 40px;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    label {
+        padding: 20px 10px;
+        width: 200px;
+        border-radius: 40px;
+        background-color: #333;
+        color: #FFF;
+        text-transform: uppercase;
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    label :hover{
+        transition: .3s;
+        background-color: #111;
+    }
+
+    text, button{
+        font-family: 'Nunito', sans-serif;
+    }
+
+    h1,h2,h3,h4{
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    text, h1, h2, h3, h4{
+        color: #F1F1f1
+    }
+
+    .identificacao{
+        font-weight: 300;
+        font-size: 16px;
+        color: rgba(255,255,255,0.8);
+    }
+
+    .nome{
+        font-weight: 700;
+        font-size: 16px;
+        color: rgba(255,255,255,1);
+    }
+
+    .colorsHeader{
+        width: 100%;
+        display: flex;
+    }
+
+    .colorHeader{
+        width: 50%;
+        height: 2px;
+    }
+
+    .btnSend{
+        background-color: #4E4E4E;
+        border-radius: 25px;
+        border: none;
+        transition: .3s;
+        color: #fff;
+        padding: 10px 15px;
+    }
+
+    .btnSend:hover{
+        background-color: #2E2E2E;
+        border-radius: 25px;
+        border: none;
+        padding: 10px 20px;
+        transition: .3s;
+    }
+
+    .bodyHome{
+        width: 100%;
+        height: calc(100vh - 80px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .people{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    thead{
+        background-color: #fff;
+        border-radius: 4px;
+        width: calc(100vw - 80px);
+        border: none;
+    }
+
+    td{
+        color: rgba(255, 255,255, 0.8);
+        font-weight: 300;
+    }
+
+    tbody{
+        margin-top: 50px;
+    }
+
+    tbody th{
+        color: rgba(255, 255,255, 1);
+    }
+</style>
+
+</html>
