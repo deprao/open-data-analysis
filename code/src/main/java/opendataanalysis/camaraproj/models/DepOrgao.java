@@ -3,21 +3,21 @@ package opendataanalysis.camaraproj.models;
 import java.util.Date;
 
 public class DepOrgao {
-    private Integer id_org;
-    private Integer id_dep;
-    private String sigla_partido;
-    private String UF;
-    private String cargo;
-    private Date data_ini;
-    private Date data_fim;
+    public Integer id_org;
+    public Integer id_dep;
+    public String sigla_partido;
+    public String sigla_uf;
+    public String cargo;
+    public Date data_inicio;
+    public Date data_fim;
 
-    public DepOrgao(Integer id_org, Integer id_dep, String sigla_partido, String UF, String cargo, Date data_ini, Date data_fim) {
+    public DepOrgao(Integer id_org, Integer id_dep, String sigla_partido, String sigla_uf, String cargo, Date data_inicio, Date data_fim) {
         this.id_org = id_org;
         this.id_dep = id_dep;
         this.sigla_partido = sigla_partido;
-        this.UF = UF;
+        this.sigla_uf = sigla_uf;
         this.cargo = cargo;
-        this.data_ini = data_ini;
+        this.data_inicio = data_inicio;
         this.data_fim = data_fim;
     }
 
@@ -45,12 +45,12 @@ public class DepOrgao {
         this.sigla_partido = sigla_partido;
     }
 
-    public String getUF() {
-        return UF;
+    public String getsigla_uf() {
+        return sigla_uf;
     }
 
-    public void setUF(String UF) {
-        this.UF = UF;
+    public void setsigla_uf(String sigla_uf) {
+        this.sigla_uf = sigla_uf;
     }
 
     public String getCargo() {
@@ -61,12 +61,12 @@ public class DepOrgao {
         this.cargo = cargo;
     }
 
-    public Date getData_ini() {
-        return data_ini;
+    public Date getdata_inicio() {
+        return data_inicio;
     }
 
-    public void setData_ini(Date data_ini) {
-        this.data_ini = data_ini;
+    public void setdata_inicio(Date data_inicio) {
+        this.data_inicio = data_inicio;
     }
 
     public Date getData_fim() {

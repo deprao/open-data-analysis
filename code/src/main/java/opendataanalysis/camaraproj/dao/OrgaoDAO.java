@@ -4,17 +4,20 @@ import opendataanalysis.camaraproj.models.Orgao;;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+@Service
 public class OrgaoDAO {
 
     @Autowired
     JdbcTemplate template;
 
     public List<Orgao> findAll(){
-        String sql = "SELECT * FROM Orgao";
+        String sql = "SELECT * FROM orgao LIMIT 100";
         RowMapper<Orgao> rm = new RowMapper<Orgao>(){
             @Override
             public Orgao mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -23,10 +26,10 @@ public class OrgaoDAO {
                         resultSet.getString("sigla"),
                         resultSet.getString("nome"),
                         resultSet.getString("tipo"),
-                        resultSet.getDate("data_ini"),
-                        resultSet.getDate("data_inst"),
-                        resultSet.getDate("data_fim"),
-                        resultSet.getString("desc_situacao"),
+                        resultSet.getTimestamp("data_inicio"),
+                        resultSet.getTimestamp("data_instalacao"),
+                        resultSet.getTimestamp("data_fim"),
+                        resultSet.getString("descricao_situacao"),
                         resultSet.getString("casa"),
                         resultSet.getString("sala")
                 );

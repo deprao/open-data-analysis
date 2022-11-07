@@ -1,6 +1,5 @@
 package opendataanalysis.camaraproj.controller;
 
-import opendataanalysis.camaraproj.dao.DeputadoDAO;
 import opendataanalysis.camaraproj.dao.OrgaoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -14,12 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class OrgaoController {
 
+    @Autowired
     OrgaoDAO dao;
 
     @RequestMapping(value = "/Listar-Orgaos", method = RequestMethod.GET)
     public String listarOrgaos(Model mod){
         mod.addAttribute("orgaos", dao.findAll());
 
-        return "orgaos";
+        return "orgao";
     }
 }

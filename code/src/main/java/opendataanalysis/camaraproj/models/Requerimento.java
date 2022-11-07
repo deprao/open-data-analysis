@@ -2,8 +2,8 @@ package opendataanalysis.camaraproj.models;
 
 public class Requerimento {
 
-    private Integer id;
-    private String titulo;
+    public Integer id;
+    public String titulo;
 
     public Requerimento(Integer id, String titulo) {
         this.id = id;

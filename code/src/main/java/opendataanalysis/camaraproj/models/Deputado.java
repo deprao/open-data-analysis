@@ -4,34 +4,34 @@ import java.util.Date;
 
 public class Deputado {
 
-    private Integer id;
-    private String nome_parlamentar;
-    private String nome_civil;
-    private Date data_nasc;
-    private Date data_falec;
-    private String sexo;
-    private String UF_nasc;
-    private String municipio_nasc;
-    private Integer id_ultima_legislatura;
+    public Integer id_dep;
+    public String nome_parlamentar;
+    public String nome_civil;
+    public Date data_nasc;
+    public Date data_falec;
+    public String sexo;
+    public String uf_nasc;
+    public String municipio_nasc;
+    public Integer id_ultima_legislatura;
 
-    public Deputado(Integer id, String nome_parlamentar, String nome_civil, Date data_nasc, Date data_falec, String sexo, String UF_nasc, String municipio_nasc, Integer id_ultima_legislatura) {
-        this.id = id;
+    public Deputado(Integer id_dep, String nome_parlamentar, String nome_civil, Date data_nasc, Date data_falec, String sexo, String uf_nasc, String municipio_nasc, Integer id_ultima_legislatura) {
+        this.id_dep = id_dep;
         this.nome_parlamentar = nome_parlamentar;
         this.nome_civil = nome_civil;
         this.data_nasc = data_nasc;
         this.data_falec = data_falec;
         this.sexo = sexo;
-        this.UF_nasc = UF_nasc;
+        this.uf_nasc = uf_nasc;
         this.municipio_nasc = municipio_nasc;
         this.id_ultima_legislatura = id_ultima_legislatura;
     }
 
     public Integer getId() {
-        return id;
+        return id_dep;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer id_dep) {
+        this.id_dep = id_dep;
     }
 
     public String getNome_parlamentar() {
@@ -75,11 +75,11 @@ public class Deputado {
     }
 
     public String getUF_nasc() {
-        return UF_nasc;
+        return uf_nasc;
     }
 
-    public void setUF_nasc(String UF_nasc) {
-        this.UF_nasc = UF_nasc;
+    public void setUF_nasc(String uf_nasc) {
+        this.uf_nasc = uf_nasc;
     }
 
     public String getMunicipio_nasc() {

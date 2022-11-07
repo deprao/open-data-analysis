@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LegislaturaController {
 
+    @Autowired
     LegislaturaDAO dao;
 
     @RequestMapping(value = "/Listar-Leg", method = RequestMethod.GET)
     public String listarLegislaturas(Model mod){
         mod.addAttribute("legislaturas", dao.findAll());
 
-        return "legislaturas";
+        return "legislatura";
     }
 }

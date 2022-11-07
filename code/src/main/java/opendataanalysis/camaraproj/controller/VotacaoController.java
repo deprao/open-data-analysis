@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class VotacaoController {
 
+    @Autowired
     VotacaoDAO dao;
 
     @RequestMapping(value = "/Listar-Votacoes", method = RequestMethod.GET)

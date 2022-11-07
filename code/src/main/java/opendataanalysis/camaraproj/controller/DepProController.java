@@ -14,12 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class DepProController {
 
+    @Autowired
     DepProDAO dao;
 
     @RequestMapping(value = "/Listar-DepPros", method = RequestMethod.GET)
     public String listarDepsProfissoes(Model mod){
         mod.addAttribute("depspros", dao.findAll());
 
-        return "depspros";
+        return "deputado-profissao";
     }
 }

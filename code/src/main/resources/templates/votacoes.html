@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+          crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -21,7 +21,7 @@
                 BD 2022
             </h1>
             <h2 class="subtitle">
-                Deputados
+                Votações
             </h2>
         </div>
         <div class="colorsHeader">
@@ -30,11 +30,9 @@
             <div class="colorHeader" style="background-color: #002776"></div>
         </div>
     </div>
-<!--    <div class="filter">-->
-<!--        <label>-->
-<!--            <input type="text" class="filterInput" placeholder="Pesquisar...">-->
-<!--        </label>-->
-<!--    </div>-->
+    <div class="filter">
+        <input type="text" class="filterInput" placeholder="Pesquisar...">
+    </div>
 </div>
 <div class="subheader">
     <a href="/Upload">
@@ -42,11 +40,16 @@
             Enviar dados
         </button>
     </a>
-   <a href="/Listar-DepsPorOrgs">
-       <button class="btnSend">
-           Dep. órgão
-       </button>
-   </a>
+    <a href="/Listar-Deps">
+        <button class="btnSend">
+            Deputados
+        </button>
+    </a>
+    <a href="/Listar-DepsPorOrgs">
+        <button class="btnSend">
+            Dep. órgão
+        </button>
+    </a>
     <a href="/Listar-DepOcups">
         <button class="btnSend">
             Dep. ocupação
@@ -92,44 +95,44 @@
             Requerimento
         </button>
     </a>
-    <a href="/Listar-Votacoes">
-        <button class="btnSend">
-            Votação
-        </button>
-    </a>
 </div>
 <div class="body">
     <table class="table">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Nome parlamentar</th>
-            <th scope="col">Nome civil</th>
-            <th scope="col">Data de nascimento</th>
-            <th scope="col">Data de falecimento</th>
-            <th scope="col">Sexo</th>
-            <th scope="col">UF</th>
-            <th scope="col">Município natal</th>
-            <th scope="col">ID da última legislatura</th>
+            <th scope="col">Data</th>
+            <th scope="col">ID orgão</th>
+            <th scope="col">Aprovação</th>
+            <th scope="col">Votos favoráveis</th>
+            <th scope="col">Votos contrários</th>
+            <th scope="col">Descrição resultado</th>
+            <th scope="col">ID requerimento</th>
+            <th scope="col">Descrição última apresentação do req.</th>
         </tr>
         </thead>
         <tbody>
-            <tr th:each="dep: ${deputados}">
-                <th th:text="${dep.id_dep}" scope="row"></th>
-                <td th:text="${dep.nome_parlamentar}"></td>
-                <td th:text="${dep.nome_civil}"></td>
-                <td th:text="${dep.data_nasc}"></td>
-                <td th:text="${dep.data_falec}"></td>
-                <td th:text="${dep.sexo}"></td>
-                <td th:text="${dep.uf_nasc}"></td>
-                <td th:text="${dep.municipio_nasc}"></td>
-                <td th:text="${dep.id_ultima_legislatura}"></td>
-            </tr>
+        <tr th:each="vot: ${votacoes}">
+            <th th:text="${vot.id_votacao}"  scope="row"></th>
+            <td th:text="${vot.data_votacao}"></td>
+            <th th:text="${vot.id_org}"  scope="row"></th>
+            <td th:text="${vot.aprovacao}"></td>
+            <td th:text="${vot.votos_favor}"></td>
+            <td th:text="${vot.votos_contra}"></td>
+            <td th:text="${vot.desc_resultado}"></td>
+            <th th:text="${vot.id_requerimento}"  scope="row"></th>
+            <td th:text="${vot.ultima_apresentacao_requerimento_descricao}"></td>
+        </tr>
         </tbody>
     </table>
 </div>
 </body>
 <style>
+
+    a{
+        color: none;
+        background: none;
+    }
     body{
         margin: 0;
         padding: 0;
@@ -326,7 +329,7 @@
 
     .body{
         overflow-y: scroll;
-        height:  calc(100vh - 220px);
+        height: calc(100vh - 220px);
         border-radius: 25px;
         width: calc(100vw - 80px);
     }
@@ -355,5 +358,6 @@
         color: rgba(255, 255,255, 1);
     }
 </style>
+
 
 </html>

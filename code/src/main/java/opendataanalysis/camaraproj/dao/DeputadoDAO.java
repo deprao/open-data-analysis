@@ -7,25 +7,27 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DeputadoDAO {
 
     @Autowired
     JdbcTemplate template;
 
     public List<Deputado> findAll(){
-        String sql = "SELECT * FROM deputado";
+        String sql = "SELECT * FROM deputado LIMIT 100";
         RowMapper<Deputado> rm = new RowMapper<Deputado>(){
             @Override
             public Deputado mapRow(ResultSet resultSet, int i) throws SQLException {
                 Deputado deputado = new Deputado(
-                        resultSet.getInt("id"),
-                        resultSet.getString("nome_civil"),
+                        resultSet.getInt("id_dep"),
                         resultSet.getString("nome_parlamentar"),
+                        resultSet.getString("nome_civil"),
                         resultSet.getDate("data_nasc"),
                         resultSet.getDate("data_falec"),
                         resultSet.getString("sexo"),
-                        resultSet.getString("UF_nasc"),
+                        resultSet.getString("uf_nasc"),
                         resultSet.getString("município_nasc"),
                         resultSet.getInt("id_ultima_legislatura")
                 );

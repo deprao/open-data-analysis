@@ -4,42 +4,42 @@ import java.util.Date;
 
 public class Votacao {
 
-    private String id_vot;
-    private Date data_vot;
-    private Integer id_org;
-    private Integer aprov;
-    private Integer vote_up;
-    private Integer vote_down;
-    private String desc_result;
-    private String ultima_req;
-    private Integer id_req;
+    public String id_votacao;
+    public Date data_votacao;
+    public Integer id_org;
+    public Integer aprovacao;
+    public Integer votos_favor;
+    public Integer votos_contra;
+    public String desc_resultado;
+    public String ultima_apresentacao_requerimento_descricao;
+    public Integer id_requerimento;
 
-    public Votacao(String id_vot, Date data_vot, Integer id_org, Integer aprov, Integer vote_up, Integer vote_down, String desc_result, String ultima_req, Integer id_req) {
-        this.id_vot = id_vot;
-        this.data_vot = data_vot;
+    public Votacao(String id_votacao, Date data_votacao, Integer id_org, Integer aprovacao, Integer votos_favor, Integer votos_contra, String desc_resultado, String ultima_apresentacao_requerimento_descricao, Integer id_requerimento) {
+        this.id_votacao = id_votacao;
+        this.data_votacao = data_votacao;
         this.id_org = id_org;
-        this.aprov = aprov;
-        this.vote_up = vote_up;
-        this.vote_down = vote_down;
-        this.desc_result = desc_result;
-        this.ultima_req = ultima_req;
-        this.id_req = id_req;
+        this.aprovacao = aprovacao;
+        this.votos_favor = votos_favor;
+        this.votos_contra = votos_contra;
+        this.desc_resultado = desc_resultado;
+        this.ultima_apresentacao_requerimento_descricao = ultima_apresentacao_requerimento_descricao;
+        this.id_requerimento = id_requerimento;
     }
 
-    public String getId_vot() {
-        return id_vot;
+    public String getid_votacao() {
+        return id_votacao;
     }
 
-    public void setId_vot(String id_vot) {
-        this.id_vot = id_vot;
+    public void setid_votacao(String id_votacao) {
+        this.id_votacao = id_votacao;
     }
 
-    public Date getData_vot() {
-        return data_vot;
+    public Date getData_votacao() {
+        return data_votacao;
     }
 
-    public void setData_vot(Date data_vot) {
-        this.data_vot = data_vot;
+    public void setData_votacao(Date data_votacao) {
+        this.data_votacao = data_votacao;
     }
 
     public Integer getId_org() {
@@ -50,51 +50,51 @@ public class Votacao {
         this.id_org = id_org;
     }
 
-    public Integer getAprov() {
-        return aprov;
+    public Integer getAprovacao() {
+        return aprovacao;
     }
 
-    public void setAprov(Integer aprov) {
-        this.aprov = aprov;
+    public void setAprovacao(Integer aprovacao) {
+        this.aprovacao = aprovacao;
     }
 
-    public Integer getVote_up() {
-        return vote_up;
+    public Integer getvotos_favor() {
+        return votos_favor;
     }
 
-    public void setVote_up(Integer vote_up) {
-        this.vote_up = vote_up;
+    public void setvotos_favor(Integer votos_favor) {
+        this.votos_favor = votos_favor;
     }
 
-    public Integer getVote_down() {
-        return vote_down;
+    public Integer getvotos_contra() {
+        return votos_contra;
     }
 
-    public void setVote_down(Integer vote_down) {
-        this.vote_down = vote_down;
+    public void setvotos_contra(Integer votos_contra) {
+        this.votos_contra = votos_contra;
     }
 
-    public String getDesc_result() {
-        return desc_result;
+    public String getDesc_resultado() {
+        return desc_resultado;
     }
 
-    public void setDesc_result(String desc_result) {
-        this.desc_result = desc_result;
+    public void setDesc_resultado(String desc_resultado) {
+        this.desc_resultado = desc_resultado;
     }
 
-    public String getUltima_req() {
-        return ultima_req;
+    public String getultima_apresentacao_requerimento_descricao() {
+        return ultima_apresentacao_requerimento_descricao;
     }
 
-    public void setUltima_req(String ultima_req) {
-        this.ultima_req = ultima_req;
+    public void setultima_apresentacao_requerimento_descricao(String ultima_apresentacao_requerimento_descricao) {
+        this.ultima_apresentacao_requerimento_descricao = ultima_apresentacao_requerimento_descricao;
     }
 
-    public Integer getId_req() {
-        return id_req;
+    public Integer getId_requerimento() {
+        return id_requerimento;
     }
 
-    public void setId_req(Integer id_req) {
-        this.id_req = id_req;
+    public void setId_requerimento(Integer id_requerimento) {
+        this.id_requerimento = id_requerimento;
     }
 }

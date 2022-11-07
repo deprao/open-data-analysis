@@ -1,18 +1,19 @@
 package opendataanalysis.camaraproj.models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Evento {
 
-    private Integer id;
-    private Date data_hora_inicio;
-    private Date data_hora_fim;
-    private String situacao;
-    private String descricao;
-    private String descricao_tipo;
-    private String localizacao;
+    public Integer id;
+    public Timestamp data_hora_inicio;
+    public Timestamp data_hora_fim;
+    public String situacao;
+    public String descricao;
+    public String descricao_tipo;
+    public String localizacao;
 
-    public Evento(Integer id, Date data_hora_inicio, Date data_hora_fim, String situacao, String descricao, String descricao_tipo, String localizacao) {
+    public Evento(Integer id, Timestamp data_hora_inicio, Timestamp data_hora_fim, String situacao, String descricao, String descricao_tipo, String localizacao) {
         this.id = id;
         this.data_hora_inicio = data_hora_inicio;
         this.data_hora_fim = data_hora_fim;
@@ -30,19 +31,19 @@ public class Evento {
         this.id = id;
     }
 
-    public Date getData_hora_inicio() {
+    public Timestamp getData_hora_inicio() {
         return data_hora_inicio;
     }
 
-    public void setData_hora_inicio(Date data_hora_inicio) {
+    public void setData_hora_inicio(Timestamp data_hora_inicio) {
         this.data_hora_inicio = data_hora_inicio;
     }
 
-    public Date getData_hora_fim() {
+    public Timestamp getData_hora_fim() {
         return data_hora_fim;
     }
 
-    public void setData_hora_fim(Date data_hora_fim) {
+    public void setData_hora_fim(Timestamp data_hora_fim) {
         this.data_hora_fim = data_hora_fim;
     }
 

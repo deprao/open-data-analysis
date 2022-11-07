@@ -1,30 +1,30 @@
 package opendataanalysis.camaraproj.models;
 
-//import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Orgao {
 
-    private Integer id;
-    private String sigla;
-    private String nome;
-    private String tipo;
-    private Date data_ini;
-    private Date data_inst;
-    private Date data_fim;
-    private String desc_situacao;
-    private String casa;
-    private String sala;
+    public Integer id;
+    public String sigla;
+    public String nome;
+    public String tipo;
+    public Timestamp data_inicio;
+    public Timestamp data_instalacao;
+    public Timestamp data_fim;
+    public String descricao_situacao;
+    public String casa;
+    public String sala;
 
-    public Orgao(Integer id, String sigla, String nome, String tipo, Date data_ini, Date data_inst, Date data_fim, String desc_situacao, String casa, String sala) {
+    public Orgao(Integer id, String sigla, String nome, String tipo, Timestamp data_inicio, Timestamp data_instalacao, Timestamp data_fim, String descricao_situacao, String casa, String sala) {
         this.id = id;
         this.sigla = sigla;
         this.nome = nome;
         this.tipo = tipo;
-        this.data_ini = data_ini;
-        this.data_inst = data_inst;
+        this.data_inicio = data_inicio;
+        this.data_instalacao = data_instalacao;
         this.data_fim = data_fim;
-        this.desc_situacao = desc_situacao;
+        this.descricao_situacao = descricao_situacao;
         this.casa = casa;
         this.sala = sala;
     }
@@ -61,36 +61,36 @@ public class Orgao {
         this.tipo = tipo;
     }
 
-    public Date getData_ini() {
-        return data_ini;
+    public Timestamp getData_inicio() {
+        return data_inicio;
     }
 
-    public void setData_ini(Date data_ini) {
-        this.data_ini = data_ini;
+    public void setData_inicio(Timestamp data_inicio) {
+        this.data_inicio = data_inicio;
     }
 
-    public Date getData_inst() {
-        return data_inst;
+    public Timestamp getData_instalacao() {
+        return data_instalacao;
     }
 
-    public void setData_inst(Date data_inst) {
-        this.data_inst = data_inst;
+    public void setData_instalacao(Timestamp data_instalacao) {
+        this.data_instalacao = data_instalacao;
     }
 
-    public Date getData_fim() {
+    public Timestamp getData_fim() {
         return data_fim;
     }
 
-    public void setData_fim(Date data_fim) {
+    public void setData_fim(Timestamp data_fim) {
         this.data_fim = data_fim;
     }
 
-    public String getDesc_situacao() {
-        return desc_situacao;
+    public String getDescricao_situacao() {
+        return descricao_situacao;
     }
 
-    public void setDesc_situacao(String desc_situacao) {
-        this.desc_situacao = desc_situacao;
+    public void setDescricao_situacao(String descricao_situacao) {
+        this.descricao_situacao = descricao_situacao;
     }
 
     public String getCasa() {

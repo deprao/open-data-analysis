@@ -2,20 +2,20 @@ package opendataanalysis.camaraproj.models;
 
 public class OrgaoEvento {
 
-    private Integer id_eve;
-    private Integer id_org;
+    public Integer id_evento;
+    public Integer id_org;
 
-    public OrgaoEvento(Integer id_eve, Integer id_org) {
-        this.id_eve = id_eve;
+    public OrgaoEvento(Integer id_evento, Integer id_org) {
+        this.id_evento = id_evento;
         this.id_org = id_org;
     }
 
-    public Integer getId_eve() {
-        return id_eve;
+    public Integer getId_evento() {
+        return id_evento;
     }
 
-    public void setId_eve(Integer id_eve) {
-        this.id_eve = id_eve;
+    public void setId_evento(Integer id_evento) {
+        this.id_evento = id_evento;
     }
 
     public Integer getId_org() {

@@ -1,7 +1,6 @@
 package opendataanalysis.camaraproj.controller;
 
-import opendataanalysis.camaraproj.dao.DeputadoDAO;
-import opendataanalysis.camaraproj.dao.LegislaturaDAO;
+import opendataanalysis.camaraproj.dao.UploadLogDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,15 +11,15 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class DeputadoController {
+public class LogController {
 
     @Autowired
-    DeputadoDAO dao;
+    UploadLogDAO dao;
 
-    @RequestMapping(value = "/Listar-Deps", method = RequestMethod.GET)
-    public String listarDeputados(Model mod){
-        mod.addAttribute("deputados", dao.findAll());
+    @RequestMapping(value = "/Historico-Uploads", method = RequestMethod.GET)
+    public String listarUploads(Model mod){
+        mod.addAttribute("uploads",dao.findAll());
 
-        return "listdeputados";
+        return "uploads";
     }
 }

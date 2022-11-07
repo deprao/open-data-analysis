@@ -30,26 +30,68 @@
                     <div class="colorHeader" style="background-color: #002776"></div>
                 </div>
             </div>
-            <div class="filter">
-                <input type="text" class="filterInput" placeholder="Pesquisar...">
-            </div>
         </div>
         <div class="subheader">
-            <button class="btnSend">
-                Enviar dados
-            </button>
-            <button class="btnSend">
-                Deputados
-            </button>
-            <button class="btnSend">
-                Órgãos
-            </button>
-            <!-- <button class="btnSend">
-                Enviar dados
-            </button>
-            <button class="btnSend">
-                Enviar dados
-            </button> -->
+            <a href="/Upload">
+                <button class="btnSend">
+                    Enviar dados
+                </button>
+            </a>
+            <a href="/Listar-Deps">
+                <button class="btnSend">
+                    Deputados
+                </button>
+            </a>
+            <a href="/Listar-DepOcups">
+                <button class="btnSend">
+                    Dep. ocupação
+                </button>
+            </a>
+            <a href="/Listar-DepPros">
+                <button class="btnSend">
+                    Dep. profissão
+                </button>
+            </a>
+            <a href="/Listar-Eventos">
+                <button class="btnSend">
+                    Eventos
+                </button>
+            </a>
+            <a href="/Listar-PresencasEventos">
+                <button class="btnSend">
+                    Evento presença
+                </button>
+            </a>
+            <a href="/Listar-RequerimentosEventos">
+                <button class="btnSend">
+                    Evento requerimento
+                </button>
+            </a>
+            <a href="/Listar-Leg">
+                <button class="btnSend">
+                    Legislaturas
+                </button>
+            </a>
+            <a href="/Listar-Orgaos">
+                <button class="btnSend">
+                    Orgãos
+                </button>
+            </a>
+            <a href="/Listar-EventosOrgaos">
+                <button class="btnSend">
+                    Orgão evento
+                </button>
+            </a>
+            <a href="/Listar-Requerimentos">
+                <button class="btnSend">
+                    Requerimento
+                </button>
+            </a>
+            <a href="/Listar-Votacoes">
+                <button class="btnSend">
+                    Votação
+                </button>
+            </a>
         </div>
         <div class="body">
             <table class="table">
@@ -66,13 +108,13 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <tr th:each="DepOrg: ${DepOrgao}">
+                    <tr th:each="DepOrg: ${depsorgs}">
                         <th th:text="${DepOrg.id_org}" scope="row"></th>
                         <td th:text="${DepOrg.id_dep}"></td>
                         <td th:text="${DepOrg.sigla_partido}"></td>
-                        <td th:text="${DepOrg.UF}"></td>
+                        <td th:text="${DepOrg.sigla_uf}"></td>
                         <td th:text="${DepOrg.cargo}"></td>
-                        <td th:text="${DepOrg.data_ini}"></td>
+                        <td th:text="${DepOrg.data_inicio}"></td>
                         <td th:text="${DepOrg.data_fim}"></td>
                       </tr>
                   </tr>
@@ -99,10 +141,231 @@
         </div>      
     </body>
 
-    <footer>
-        <script type="javascript">
-            
-        </script>
-    </footer>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: #222;
+            /* background: linear-gradient(120deg, rgba(0,0,0,1) 0%, rgba(51,51,51,1) 100%); */
+            padding: 40px;
+        }
+
+        .header{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .uploadBody{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top:10%;
+            flex-direction: column;
+        }
+
+        input[type="file"] {
+            /* display: none; */
+            display: flex;
+            flex-direction: column;
+            color: #Fff;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            padding: 10px;
+            background-color: #4E4E4E;
+            border-radius: 25px;
+            border: none;
+            transition: .3s;
+            color: #fff;
+            padding-left: 15px;
+            padding-right: 15px;
+            cursor: pointer;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover{
+            padding: 10px;
+            background-color: #2E2E2E;
+            border-radius: 25px;
+            border: none;
+            padding-left: 20px;
+            padding-right: 20px;
+            transition: .3s;
+        }
+
+
+
+        label {
+            padding: 20px 10px;
+            width: 200px;
+            border-radius: 40px;
+            background-color: #333;
+            color: #FFF;
+            text-transform: uppercase;
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        label :hover{
+            transition: .3s;
+            background-color: #111;
+        }
+
+        text, button{
+            font-family: 'Nunito', sans-serif;
+        }
+
+        h1,h2,h3,h4{
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        text, h1, h2, h3, h4{
+            color: #F1F1f1
+        }
+
+        .title{
+            font-size: 30px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .subtitle{
+            font-weight: 300;
+            font-size: 30px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .identificacao{
+            font-weight: 300;
+            font-size: 16px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .nome{
+            font-weight: 700;
+            font-size: 16px;
+            color: rgba(255,255,255,1);
+        }
+
+        .headerTitle{
+            display: flex;
+            align-items: center;
+        }
+
+        .filterInput{
+            width: 250px;
+            background: none;
+            color: #FFF;
+            border: none;
+            border-bottom: solid 1px rgba(255,255,255,0.8);
+            padding: 10px;
+            outline: none;
+            transition: .3s;
+        }
+        .filterInput:hover{
+            border: none;
+            border-bottom: solid 1px rgba(255,255,255,1);
+            width: 280px;
+            transition: .3s;
+        }
+
+        .filterInput:focus{
+            border: none;
+            border-bottom: solid 1px rgba(255,255,255,1);
+            width: 280px;
+            transition: .3s;
+        }
+
+        .colorsHeader{
+            width: 100%;
+            display: flex;
+        }
+
+        .colorHeader{
+            width: 50%;
+            height: 2px;
+        }
+
+        .subheader{
+            margin-bottom: 10px;
+        }
+
+        .btnSend{
+            padding: 10px;
+            background-color: #4E4E4E;
+            border-radius: 25px;
+            border: none;
+            transition: .3s;
+            color: #fff;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .btnSend:hover{
+            padding: 10px;
+            background-color: #2E2E2E;
+            border-radius: 25px;
+            border: none;
+            padding-left: 20px;
+            padding-right: 20px;
+            transition: .3s;
+        }
+
+        .bodyHome{
+            width: 100%;
+            height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .people{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .body{
+            overflow-y: scroll;
+            height: calc(100vh - 220px);
+            border-radius: 25px;
+            width: calc(100vw - 80px);
+        }
+
+        .body::-webkit-scrollbar{
+            display: none;
+        }
+
+        thead{
+            background-color: #fff;
+            border-radius: 4px;
+            width: calc(100vw - 80px);
+            border: none;
+        }
+
+        td{
+            color: rgba(255, 255,255, 0.8);
+            font-weight: 300;
+        }
+
+        tbody{
+            margin-top: 50px;
+        }
+
+        tbody th{
+            color: rgba(255, 255,255, 1);
+        }
+    </style>
 
 </html>

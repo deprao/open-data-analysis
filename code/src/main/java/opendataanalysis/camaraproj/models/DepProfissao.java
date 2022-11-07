@@ -1,14 +1,15 @@
 package opendataanalysis.camaraproj.models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class DepProfissao {
-    private Integer id_dep;
-    private Integer cod_tipo;
-    private String titulo;
-    private Date data_hora_registro;
+    public Integer id_dep;
+    public Integer cod_tipo;
+    public String titulo;
+    public Timestamp data_hora_registro;
 
-    public DepProfissao(Integer id_dep, Integer cod_tipo, String titulo, Date data_hora_registro) {
+    public DepProfissao(Integer id_dep, Integer cod_tipo, String titulo, Timestamp data_hora_registro) {
         this.id_dep = id_dep;
         this.cod_tipo = cod_tipo;
         this.titulo = titulo;
@@ -39,11 +40,11 @@ public class DepProfissao {
         this.titulo = titulo;
     }
 
-    public Date getData_hora_registro() {
+    public Timestamp getData_hora_registro() {
         return data_hora_registro;
     }
 
-    public void setData_hora_registro(Date data_hora_registro) {
+    public void setData_hora_registro(Timestamp data_hora_registro) {
         this.data_hora_registro = data_hora_registro;
     }
 }

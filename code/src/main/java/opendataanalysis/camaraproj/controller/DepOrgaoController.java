@@ -14,13 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class DepOrgaoController {
 
+    @Autowired
     DepOrgaoDAO dao;
 
     @RequestMapping(value = "/Listar-DepsPorOrgs", method = RequestMethod.GET)
     public String listarDeputadosPorOrgaos(Model mod){
         mod.addAttribute("depsorgs", dao.findAll());
 
-        return "depsorgs";
+        return "deputado-orgao";
     }
 
 }

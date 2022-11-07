@@ -1,20 +1,20 @@
 package opendataanalysis.camaraproj.models;
 
 public class DepOcupacao {
-    private String titulo;
-    private String entidade;
-    private String ano_ini;
-    private String ano_fim;
-    private String UF_ent;
-    private String pais_entidade;
-    private Integer id_dep;
+    public String titulo;
+    public String entidade;
+    public String ano_inicio;
+    public String ano_fim;
+    public String uf_entidade;
+    public String pais_entidade;
+    public Integer id_dep;
 
-    public DepOcupacao(String titulo, String entidade, String ano_ini, String ano_fim, String UF_ent, String pais_entidade, Integer id_dep) {
+    public DepOcupacao(String titulo, String entidade, String ano_inicio, String ano_fim, String uf_entidade, String pais_entidade, Integer id_dep) {
         this.titulo = titulo;
         this.entidade = entidade;
-        this.ano_ini = ano_ini;
+        this.ano_inicio = ano_inicio;
         this.ano_fim = ano_fim;
-        this.UF_ent = UF_ent;
+        this.uf_entidade = uf_entidade;
         this.pais_entidade = pais_entidade;
         this.id_dep = id_dep;
     }
@@ -35,12 +35,12 @@ public class DepOcupacao {
         this.entidade = entidade;
     }
 
-    public String getAno_ini() {
-        return ano_ini;
+    public String getAno_inicio() {
+        return ano_inicio;
     }
 
-    public void setAno_ini(String ano_ini) {
-        this.ano_ini = ano_ini;
+    public void setAno_inicio(String ano_inicio) {
+        this.ano_inicio = ano_inicio;
     }
 
     public String getAno_fim() {
@@ -51,12 +51,12 @@ public class DepOcupacao {
         this.ano_fim = ano_fim;
     }
 
-    public String getUF_ent() {
-        return UF_ent;
+    public String getuf_entidade() {
+        return uf_entidade;
     }
 
-    public void setUF_ent(String UF_ent) {
-        this.UF_ent = UF_ent;
+    public void setuf_entidade(String uf_entidade) {
+        this.uf_entidade = uf_entidade;
     }
 
     public String getPais_entidade() {

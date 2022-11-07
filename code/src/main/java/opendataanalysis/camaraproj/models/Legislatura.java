@@ -5,16 +5,16 @@ import java.util.Date;
 public class Legislatura {
 
 
-    private Integer id;
-    private Date data_ini;
-    private Date data_fim;
-    private Integer ano_elec;
+    public Integer id;
+    public Date data_inicio;
+    public Date data_fim;
+    public Integer ano_eleicao;
 
-    public Legislatura(Integer id, Date data_ini, Date data_fim, Integer ano_elec) {
+    public Legislatura(Integer id, Date data_inicio, Date data_fim, Integer ano_eleicao) {
         this.id = id;
-        this.data_ini = data_ini;
+        this.data_inicio = data_inicio;
         this.data_fim = data_fim;
-        this.ano_elec = ano_elec;
+        this.ano_eleicao = ano_eleicao;
     }
 
     public Date getData_fim() {
@@ -33,19 +33,19 @@ public class Legislatura {
         this.id = id;
     }
 
-    public Date getData_ini() {
-        return data_ini;
+    public Date getData_inicio() {
+        return data_inicio;
     }
 
-    public void setData_ini(Date data_ini) {
-        this.data_ini = data_ini;
+    public void setData_inicio(Date data_inicio) {
+        this.data_inicio = data_inicio;
     }
 
-    public Integer getAno_elec() {
-        return ano_elec;
+    public Integer getAno_eleicao() {
+        return ano_eleicao;
     }
 
-    public void setAno_elec(Integer ano_elec) {
-        this.ano_elec = ano_elec;
+    public void setAno_eleicao(Integer ano_eleicao) {
+        this.ano_eleicao = ano_eleicao;
     }
 }

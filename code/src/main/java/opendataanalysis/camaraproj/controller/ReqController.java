@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ReqController {
 
+    @Autowired
     ReqDAO dao;
 
     @RequestMapping(value = "/Listar-Requerimentos", method = RequestMethod.GET)

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class DepOcupController {
 
+    @Autowired
     DepOcupDAO dao;
 
     @RequestMapping(value = "/Listar-DepOcups", method = RequestMethod.GET)

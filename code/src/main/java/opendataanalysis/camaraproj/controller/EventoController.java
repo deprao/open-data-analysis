@@ -14,12 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class EventoController {
 
+    @Autowired
     EventoDAO dao;
 
     @RequestMapping(value = "/Listar-Eventos", method = RequestMethod.GET)
     public String listarEventos(Model mod){
         mod.addAttribute("eventos", dao.findAll());
 
-        return "eventos";
+        return "evento";
     }
+
+
+
 }
