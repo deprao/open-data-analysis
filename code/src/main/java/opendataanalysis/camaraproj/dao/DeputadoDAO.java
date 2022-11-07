@@ -37,4 +37,21 @@ public class DeputadoDAO {
 
         return template.query(sql, rm);
     }
+
+    public boolean upload(String filepath){
+        try{
+            Integer tuplas = template.update("COPY deputado (id_dep, nome_parlamentar, id_ultima_legislatura, nome_civil, sexo, data_nasc, data_falec, uf_nasc, município_nasc) FROM "
+                    + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
+
+            String[] pathcomponents = filepath.split("\\\\");
+            String filename = pathcomponents[pathcomponents.length - 1];
+
+            template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+
+    }
 }

@@ -31,4 +31,21 @@ public class EventoReqDAO {
 
         return template.query(sql, rm);
     }
+
+    public boolean upload(String filepath){
+        try{
+            Integer tuplas = template.update("COPY evento_requer_aprovacao (id_evento, id_requerimento) FROM "
+                    + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
+
+            String[] pathcomponents = filepath.split("\\\\");
+            String filename = pathcomponents[pathcomponents.length - 1];
+
+            template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+
+    }
 }

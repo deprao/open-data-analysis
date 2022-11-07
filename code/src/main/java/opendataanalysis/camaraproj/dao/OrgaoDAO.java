@@ -39,4 +39,21 @@ public class OrgaoDAO {
 
         return template.query(sql, rm);
     }
+
+    public boolean upload(String filepath){
+        try{
+            Integer tuplas = template.update("COPY orgao (id, sigla, nome, tipo, data_inicio, data_instalacao, data_fim, descricao_situacao, casa, sala) FROM "
+                    + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
+
+            String[] pathcomponents = filepath.split("\\\\");
+            String filename = pathcomponents[pathcomponents.length - 1];
+
+            template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+
+    }
 }

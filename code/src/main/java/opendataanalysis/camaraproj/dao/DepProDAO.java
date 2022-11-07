@@ -32,4 +32,21 @@ public class DepProDAO {
 
         return template.query(sql, rm);
     }
+
+    public boolean upload(String filepath){
+        try{
+            Integer tuplas = template.update("COPY dep_profissao (id_dep, data_hora_registro, cod_tipo, titulo) FROM "
+                    + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
+
+            String[] pathcomponents = filepath.split("\\\\");
+            String filename = pathcomponents[pathcomponents.length - 1];
+
+            template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+
+    }
 }

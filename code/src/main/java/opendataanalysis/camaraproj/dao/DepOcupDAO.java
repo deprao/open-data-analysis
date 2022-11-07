@@ -37,4 +37,21 @@ public class DepOcupDAO {
         return template.query(sql, rm);
     }
 
+    public boolean upload(String filepath){
+        try{
+            Integer tuplas = template.update("COPY dep_ocupacao (id_dep, titulo, entidade, uf_entidade, pais_entidade, ano_inicio, ano_fim) FROM "
+                    + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
+
+            String[] pathcomponents = filepath.split("\\\\");
+            String filename = pathcomponents[pathcomponents.length - 1];
+
+            template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+
+    }
+
 }
