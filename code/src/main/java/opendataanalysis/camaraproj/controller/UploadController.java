@@ -34,14 +34,14 @@ public class UploadController {
 
     @RequestMapping(value = "/Upload" ,method = RequestMethod.POST)
     public String UploadArq(@RequestParam String tabela, String path){
-        System.out.println(path);
+        boolean verify = true;
 
         switch (tabela){
             case "deputado":
                 return "listdeputados";
             case "evento":
-                eventodao.upload(path);
-                return "index";
+                verify = eventodao.upload(path);
+                return verify? "ok" : "erro";
             default:
                 return "votacoes";
         }

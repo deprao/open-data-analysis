@@ -20,6 +20,6 @@ public class LogController {
     public String listarUploads(Model mod){
         mod.addAttribute("uploads",dao.findAll());
 
-        return "uploads";
+        return "log";
     }
 }

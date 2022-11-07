@@ -38,7 +38,8 @@ public class EventoDAO {
         return template.query(sql, rm);
     }
 
-    public void upload(String filepath){
+    public boolean upload(String filepath){
+       try{
         Integer tuplas = template.update("COPY evento (id, data_hora_inicio, data_hora_fim, situacao, descricao, descricao_tipo, localizacao) FROM "
                 + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
 
@@ -46,6 +47,11 @@ public class EventoDAO {
         String filename = pathcomponents[pathcomponents.length - 1];
 
         template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+        return true;
+       }
+       catch(Exception e){
+            return false;
+       }
 
     }
 }
