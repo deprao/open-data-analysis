@@ -8,9 +8,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import opendataanalysis.camaraproj.dao.*;
+import org.springframework.ui.Model;
 
 @Controller
 public class UploadController {
+
+    @Autowired
+    UploadLogDAO dao;
+
+    @RequestMapping(value = "/Listar-cargas", method = RequestMethod.GET)
+    public String listarCargas(Model mod){
+        mod.addAttribute("cargas", dao.findAll());
+
+        return "log";
+    }
 
     @RequestMapping(value = "/Upload" ,method = RequestMethod.GET)
     public String index(){
@@ -25,7 +36,6 @@ public class UploadController {
     public String UploadArq(@RequestParam String tabela, String path){
         System.out.println(path);
 
-        System.out.println(path);
         switch (tabela){
             case "deputado":
                 return "listdeputados";
