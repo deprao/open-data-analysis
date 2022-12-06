@@ -47,9 +47,9 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#222;">
                     <a class="dropdown-item" href="/Listar-Deps" style="color:#F1F1f1;">Deputados</a>
-                    <a class="dropdown-item" href="/Listar-DepsPorOrgs"  style="color:#F1F1f1;">Cargos de deputados em órgãos</a>
-                    <a class="dropdown-item" href="/Listar-DepOcups"  style="color:#F1F1f1;">Ocupações de deputados</a>
-                    <a class="dropdown-item" href="/Listar-DepPros"  style="color:#F1F1f1;">Profissões e capacitações de deputados</a>
+                    <a class="dropdown-item" href="/Listar-DepsPorOrgs"  style="color:#F1F1f1;">Trablaha no órgao</a>
+                    <a class="dropdown-item" href="/Listar-DepOcups"  style="color:#F1F1f1;">Ocupação</a>
+                    <a class="dropdown-item" href="/Listar-DepPros"  style="color:#F1F1f1;">Profissão</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -58,8 +58,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#222;">
                       <a class="dropdown-item" href="/Listar-Eventos" style="color:#F1F1f1;">Eventos</a>
-                      <a class="dropdown-item" href="/Listar-PresencasEventos"  style="color:#F1F1f1;">Presença de deputados em eventos</a>
-                      <a class="dropdown-item" href="/Listar-RequerimentosEventos"  style="color:#F1F1f1;">Requerimentos para aprovações de eventos</a>
+                      <a class="dropdown-item" href="/Listar-PresencasEventos"  style="color:#F1F1f1;">Deputados presentes</a>
+                      <a class="dropdown-item" href="/Listar-RequerimentosEventos"  style="color:#F1F1f1;">Requerimento de aprovação</a>
                     </div>
                   </li>
                   <li class="nav-item dropdown">
@@ -68,7 +68,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#222;">
                       <a class="dropdown-item" href="/Listar-Orgaos" style="color:#F1F1f1;">Órgãos</a>
-                      <a class="dropdown-item" href="/Listar-EventosOrgaos"  style="color:#F1F1f1;">Eventos por órgão organizador</a>
+                      <a class="dropdown-item" href="/Listar-EventosOrgaos"  style="color:#F1F1f1;">Órgão realiza evento</a>
                     </div>
                   </li>
                   <li class="nav-item">
@@ -91,17 +91,16 @@
                     <text>Selecionar tabela: </text>
                     <select name="tabela" id="tabela">
                         <option value="deputado">Deputados</option>
-                        <option value="dep_trabalha_orgao">Cargos em orgãos de deputados</option>
-                        <option value="dep_profissao">Profissões e capacitações de deputados</option>
-                        <option value="dep_ocupacao">Ocupações de deputados</option>
+                        <option value="dep_trabalha_orgao">Deputado trabalha em orgão</option>
+                        <option value="dep_profissao">Deputado profissão</option>
                         <option value="evento">Eventos</option>
-                        <option value="deputado_participa_evento">Presenças de deputados em eventos</option>
-                        <option value="evento_requer_aprovacao">Requerimentos para aprovações de eventos</option>
-                        <option value="legislatura">Legislaturas</option>
-                        <option value="orgao">Órgãos</option>
-                        <option value="orgao_realiza_evento">Eventos por órgão organizador </option>
-                        <option value="requerimento">Requerimentos</option>
-                        <option value="votacao">Votações</option>
+                        <option value="deputado_participa_evento">Evento presença</option>
+                        <option value="evento_requer_aprovacao">Requerimento para aprovação de evento</option>
+                        <option value="legislatura">Legislatura</option>
+                        <option value="orgao">Órgao</option>
+                        <option value="orgao_realiza_evento">Órgão realiza evento</option>
+                        <option value="requerimento">Requerimento</option>
+                        <option value="votacao">Votação</option>
                     </select>
                 </div>
                 <input type="text" class="filterInput" name="path" id="path" placeholder="Caminho do arquivo..." />

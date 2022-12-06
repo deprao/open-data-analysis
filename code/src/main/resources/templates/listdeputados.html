@@ -70,6 +70,12 @@
                   <a  onclick="this.parentNode.submit()" class="dropdown-item" style="color:#F1F1f1;">
                       Gráfico - Partidos</a>
               </form>
+              <form action="/Graphs-Deps" method="POST">
+                  <input type="hidden" name="value" value="4" />
+                  <input type="hidden" name="param" value="M" />
+                  <a  onclick="this.parentNode.submit()" class="dropdown-item" style="color:#F1F1f1;">
+                      Gráfico - Profissão</a>
+              </form>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -90,6 +96,12 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#222;">
               <a class="dropdown-item" href="/Listar-Orgaos" style="color:#F1F1f1;">Órgãos</a>
               <a class="dropdown-item" href="/Listar-EventosOrgaos"  style="color:#F1F1f1;">Órgão realiza evento</a>
+                <form action="/Graphs-Orgao" method="POST">
+                    <input type="hidden" name="value" value="1" />
+                    <input type="hidden" name="param" value="M" />
+                    <a  onclick="this.parentNode.submit()" class="dropdown-item" style="color:#F1F1f1;">
+                        Gráfico - Eventos por Orgão</a>
+                </form>
             </div>
           </li>
           <li class="nav-item">
@@ -109,7 +121,7 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
   </nav>
-    <li class="nav-item dropdown" style="margin-top: -30px">
+    <li class="nav-item dropdown" style="margin-top: -10px">
         <a class="nav-link dropdown-toggle" href="#" id="filterDropdown" role="button"  style="color:#F1F1f1"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Filtros

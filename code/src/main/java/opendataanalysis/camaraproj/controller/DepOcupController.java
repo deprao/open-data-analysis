@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class DepOcupController {
+public class    DepOcupController {
 
     @Autowired
     DepOcupDAO dao;

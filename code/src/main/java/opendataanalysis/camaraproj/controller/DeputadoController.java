@@ -93,14 +93,8 @@ public class DeputadoController {
 
                 for(String partido:  dao.findPartidos()){
                     if(partido != null){
-                        if(partido != "S.PART.") {
-                            depsPartido.add(dao.findQtdPorPartido(partido));
-                            partidos.add(partido);
-                            System.out.println(partido + "Partido");
-                        }
-                    }else{
-                        depsPartido.add(0);
-                        partidos.add("Outros");
+                        depsPartido.add(dao.findQtdPorPartido(partido));
+                        partidos.add(partido);
                     }
                 }
                 graphDeputdosPartido.put("deputados", depsPartido);
@@ -109,6 +103,25 @@ public class DeputadoController {
                 mod.addAttribute("partidosData", graphPartidos);
 
                 return  "chartdeputadospartido";
+            case 4:
+                Map<String, List<Integer>> graphDeputdosProf = new TreeMap<>();
+                Map<String, List<String>> graphProfs = new TreeMap<>();
+
+                List<Integer> depsProfs = new ArrayList<>();
+                List<String> profs =  new ArrayList<>();
+
+                for(String prof:  dao.findProfissoes()){
+                    if(prof != null){
+                        depsProfs.add(dao.findQtdPorProfissao(prof));
+                        profs.add(prof);
+                    }
+                }
+                graphDeputdosProf.put("deputados", depsProfs);
+                graphProfs.put("profissoes", profs);
+                mod.addAttribute("deputadosData", graphDeputdosProf);
+                mod.addAttribute("profissoesData", graphProfs);
+
+                return  "chartdeputadosprof";
 
 
         }

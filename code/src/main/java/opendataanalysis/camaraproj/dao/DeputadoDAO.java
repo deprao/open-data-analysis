@@ -17,7 +17,7 @@ public class DeputadoDAO {
     JdbcTemplate template;
 
     public List<Deputado> findAll(){
-        String sql = "SELECT * FROM deputado";
+        String sql = "SELECT * FROM deputado LIMIT 100";
         RowMapper<Deputado> rm = new RowMapper<Deputado>(){
             @Override
             public Deputado mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -40,7 +40,7 @@ public class DeputadoDAO {
     }
 
     public List<Deputado> findByName(String name){
-        String sql = "SELECT * FROM deputado WHERE nome_parlamentar LIKE '"+"%"+name+"%"+"' OR nome_civil LIKE '"+"%"+name+"%"+"';";
+        String sql = "SELECT * FROM deputado WHERE nome_parlamentar LIKE '"+"%"+name+"%"+"' OR nome_civil LIKE '"+"%"+name+"%"+"' LIMIT 100;";
         RowMapper<Deputado> rm = new RowMapper<Deputado>(){
             @Override
             public Deputado mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -123,8 +123,18 @@ public class DeputadoDAO {
         return template.queryForList(sql, String.class);
     }
 
+    public List<String> findProfissoes(){
+        String sql = "SELECT DISTINCT titulo FROM dep_profissao;";
+        return template.queryForList(sql, String.class);
+    }
+
     public Integer findQtdPorPartido(String partido){
         String sql = "SELECT COUNT(*) FROM dep_trabalha_orgao WHERE sigla_partido='"+partido+"';";
+        return template.queryForObject(sql, new Object [] {}, Integer.class);
+    }
+
+    public Integer findQtdPorProfissao(String prof){
+        String sql = "SELECT COUNT(*) FROM dep_profissao WHERE titulo='"+prof+"';";
         return template.queryForObject(sql, new Object [] {}, Integer.class);
     }
 }

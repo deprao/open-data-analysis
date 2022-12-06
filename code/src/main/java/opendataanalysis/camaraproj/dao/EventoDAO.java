@@ -39,19 +39,19 @@ public class EventoDAO {
     }
 
     public boolean upload(String filepath){
-       try{
-        Integer tuplas = template.update("COPY evento (id, data_hora_inicio, data_hora_fim, situacao, descricao, descricao_tipo, localizacao) FROM "
-                + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
+        try{
+            Integer tuplas = template.update("COPY evento (id, data_hora_inicio, data_hora_fim, situacao, descricao, descricao_tipo, localizacao) FROM "
+                    + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
 
-        String[] pathcomponents = filepath.split("\\\\");
-        String filename = pathcomponents[pathcomponents.length - 1];
+            String[] pathcomponents = filepath.split("\\\\");
+            String filename = pathcomponents[pathcomponents.length - 1];
 
-        template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
-        return true;
-       }
-       catch(Exception e){
+            template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+        }catch(Exception e){
             return false;
-       }
+        }
+
+        return true;
 
     }
 }

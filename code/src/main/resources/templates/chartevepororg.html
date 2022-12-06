@@ -119,17 +119,21 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   const ctx = document.getElementById('myChart');
-  const partidos  = ['PSOL', 'PCdoB', 'REPUBLIC', 'AVANTE', 'CIDADANIA', 'PODE', 'PROS', 'S.PART.', 'PATRIOTA',
-'PL', 'REDE', 'NOVO', 'PSDB', 'UNIÃO', 'PT', 'PSB', 'PP', 'MDB', 'PDT', 'SOLIDARI', 'PSC', 'PSD', 'PV', 'PTB']
+  const orgaos  =  ['CDEICS', 'CMADS', 'EVENTOS', 'PEC14215', 'GTADVPUB', 'CEXINFAN', 'CESUBCRE', 'CEXWAIKA', 'PEC01321', 'CECANCER', 'PEC12215',
+    'CINDRA', 'CEXBARRA', 'CMO', 'CE', 'CCJC', 'CTASP', 'SUB5G', 'PEC03221', 'PLEN', 'PL041421', 'CCTCI', 'CDC', 'PEC16219',
+    'CEXSUSP', 'CEXOBRAS', 'PEC01522', 'PL646119', 'CEXFEMIN', 'CPD', 'CEDES', 'MERCOSUL', 'CVT', 'PL649419', 'CREDN', 'GTANS',
+    'GTCPP', 'PEC00720', 'CEXJAVAR', 'CTUR', 'GTPL3890', 'CSPCCO', 'CSSF', 'CFT', 'GTCARTOR', 'CLP', 'CEXSITPE', 'CFFC', 'CESPO',
+    'CEXPETRJ', 'PL741906', 'CCULT', 'GTSISGOV', 'COETICA', 'CDHM', 'PEC03921', 'SEMULHER', 'CEXQUEI', 'CDU', 'CMULHER', 'GTMINE22',
+    'PEC01122', 'CAPADR', 'GTJOVENS', 'PEC01821', 'GTPL2564', 'CME', 'PL144019', 'CEXMEC', 'CIDOSO']
 
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: partidos,
+      labels: orgaos,
         datasets: [{
-        label: 'Quantidade de deputados por partido',
-        data: [[${deputadosData.deputados}]],
+        label: 'Quantidade de eventos por orgão',
+        data: [[${eventosData.eventos}]],
         borderWidth: 1
       }]
     },
