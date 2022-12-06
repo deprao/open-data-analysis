@@ -17,7 +17,7 @@ public class OrgaoDAO {
     JdbcTemplate template;
 
     public List<Orgao> findAll(){
-        String sql = "SELECT * FROM orgao LIMIT 100";
+        String sql = "SELECT * FROM orgao";
         RowMapper<Orgao> rm = new RowMapper<Orgao>(){
             @Override
             public Orgao mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -38,6 +38,45 @@ public class OrgaoDAO {
         };
 
         return template.query(sql, rm);
+    }
+
+    public List<Orgao> findByName(String name){
+        String sql = "SELECT * FROM orgao WHERE sigla LIKE '%"+name+"%' OR nome LIKE '%"+name+"%' ";
+        RowMapper<Orgao> rm = new RowMapper<Orgao>(){
+            @Override
+            public Orgao mapRow(ResultSet resultSet, int i) throws SQLException {
+                Orgao orgao = new Orgao(
+                        resultSet.getInt("id"),
+                        resultSet.getString("sigla"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("tipo"),
+                        resultSet.getTimestamp("data_inicio"),
+                        resultSet.getTimestamp("data_instalacao"),
+                        resultSet.getTimestamp("data_fim"),
+                        resultSet.getString("descricao_situacao"),
+                        resultSet.getString("casa"),
+                        resultSet.getString("sala")
+                );
+                return orgao;
+            }
+        };
+
+        return template.query(sql, rm);
+    }
+
+    public List<Integer> findOrgaosEventos(){
+        String sql = "SELECT DISTINCT id_org FROM orgao_realiza_evento;";
+        return template.queryForList(sql, new Object[] {}, Integer.class);
+    }
+
+    public String findOrgaosById(Integer id){
+        String sql = "SELECT sigla FROM orgao WHERE id="+id;
+        return template.queryForObject(sql, String.class);
+    }
+
+    public Integer findQtdEveByOrg(Integer id_org){
+        String sql = "SELECT COUNT(*) FROM orgao_realiza_evento WHERE id_org='"+id_org+"';";
+        return template.queryForObject(sql, new Object [] {}, Integer.class);
     }
 
     public boolean upload(String filepath){

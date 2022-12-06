@@ -23,4 +23,16 @@ public class ReqController {
 
         return "requerimentos";
     }
+
+    @RequestMapping(value = "/Listar-Req-Filter" ,method = RequestMethod.POST)
+    public String listarDeputadosFilter(Model mod,@RequestParam int value, String param) {
+        switch (value){
+            case 1:
+                mod.addAttribute("requerimentos", dao.findByName(param));
+                return "requerimentos";
+        }
+
+
+        return "index";
+    }
 }

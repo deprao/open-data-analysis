@@ -17,7 +17,23 @@ public class ReqDAO {
     JdbcTemplate template;
 
     public List<Requerimento> findAll(){
-        String sql = "SELECT * FROM requerimento LIMIT 100";
+        String sql = "SELECT * FROM requerimento";
+        RowMapper<Requerimento> rm = new RowMapper<Requerimento>(){
+            @Override
+            public Requerimento mapRow(ResultSet resultSet, int i) throws SQLException {
+                Requerimento requerimento = new Requerimento(
+                        resultSet.getInt("id"),
+                        resultSet.getString("titulo")
+                );
+                return requerimento;
+            }
+        };
+
+        return template.query(sql, rm);
+    }
+
+    public List<Requerimento> findByName(String name){
+        String sql = "SELECT * FROM requerimento WHERE titulo LIKE '%"+name+"%'";
         RowMapper<Requerimento> rm = new RowMapper<Requerimento>(){
             @Override
             public Requerimento mapRow(ResultSet resultSet, int i) throws SQLException {

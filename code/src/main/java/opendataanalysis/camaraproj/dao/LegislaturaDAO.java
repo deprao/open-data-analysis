@@ -17,7 +17,7 @@ public class LegislaturaDAO {
     JdbcTemplate template;
 
     public List<Legislatura> findAll(){
-        String sql = "SELECT * FROM legislatura LIMIT 100";
+        String sql = "SELECT * FROM legislatura";
         RowMapper<Legislatura> rm = new RowMapper<Legislatura>(){
             @Override
             public Legislatura mapRow(ResultSet resultSet, int i) throws SQLException {

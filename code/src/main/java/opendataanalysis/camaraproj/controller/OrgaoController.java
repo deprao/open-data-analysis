@@ -27,6 +27,18 @@ public class OrgaoController {
         return "orgao";
     }
 
+    @RequestMapping(value = "/Listar-Org-Filter" ,method = RequestMethod.POST)
+    public String listarDeputadosFilter(Model mod,@RequestParam int value, String param) {
+        switch (value){
+            case 1:
+                mod.addAttribute("orgaos", dao.findByName(param));
+                return "orgao";
+        }
+
+
+        return "index";
+    }
+
     @RequestMapping(value = "/Graphs-Orgao", method =  RequestMethod.POST)
     public String getDataChartsDeps(Model mod,@RequestParam int value){
         switch (value){

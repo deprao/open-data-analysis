@@ -1,5 +1,6 @@
 package opendataanalysis.camaraproj.dao;
 
+import opendataanalysis.camaraproj.models.ChartModel;
 import opendataanalysis.camaraproj.models.Deputado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,7 +18,7 @@ public class DeputadoDAO {
     JdbcTemplate template;
 
     public List<Deputado> findAll(){
-        String sql = "SELECT * FROM deputado LIMIT 100";
+        String sql = "SELECT * FROM deputado";
         RowMapper<Deputado> rm = new RowMapper<Deputado>(){
             @Override
             public Deputado mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -40,7 +41,7 @@ public class DeputadoDAO {
     }
 
     public List<Deputado> findByName(String name){
-        String sql = "SELECT * FROM deputado WHERE nome_parlamentar LIKE '"+"%"+name+"%"+"' OR nome_civil LIKE '"+"%"+name+"%"+"' LIMIT 100;";
+        String sql = "SELECT * FROM deputado WHERE nome_parlamentar LIKE '"+"%"+name+"%"+"' OR nome_civil LIKE '"+"%"+name+"%"+"';";
         RowMapper<Deputado> rm = new RowMapper<Deputado>(){
             @Override
             public Deputado mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -63,7 +64,7 @@ public class DeputadoDAO {
     }
 
     public List<Deputado> findForGenre(String genre){
-        String sql = "SELECT * FROM deputado WHERE sexo='"+genre+"' LIMIT 100";
+        String sql = "SELECT * FROM deputado WHERE sexo='"+genre+"'";
         RowMapper<Deputado> rm = new RowMapper<Deputado>(){
             @Override
             public Deputado mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -118,6 +119,7 @@ public class DeputadoDAO {
         return template.queryForObject(sql, new Object [] {}, Integer.class);
     }
 
+
     public List<String> findPartidos(){
         String sql = "SELECT DISTINCT sigla_partido FROM dep_trabalha_orgao;";
         return template.queryForList(sql, String.class);
@@ -129,12 +131,29 @@ public class DeputadoDAO {
     }
 
     public Integer findQtdPorPartido(String partido){
-        String sql = "SELECT COUNT(*) FROM dep_trabalha_orgao WHERE sigla_partido='"+partido+"';";
+        String sql = "SELECT COUNT(DISTINCT id_dep) FROM dep_trabalha_orgao WHERE sigla_partido='"+partido+"';";
         return template.queryForObject(sql, new Object [] {}, Integer.class);
     }
 
     public Integer findQtdPorProfissao(String prof){
         String sql = "SELECT COUNT(*) FROM dep_profissao WHERE titulo='"+prof+"';";
         return template.queryForObject(sql, new Object [] {}, Integer.class);
+    }
+
+    public boolean upload(String filepath){
+        try{
+            Integer tuplas = template.update("COPY deputados (id_dep, nome_parlamentar, nome_civil, data_nasc, data_falec, sexo, uf_nasc, municipio_nasc, id_ultima_legislatura) FROM "
+                    + "\'" + filepath +  "\'" +" DELIMITER ';' CSV HEADER;");
+
+            String[] pathcomponents = filepath.split("\\\\");
+            String filename = pathcomponents[pathcomponents.length - 1];
+
+            template.update("INSERT INTO insert_log VALUES (?, CURRENT_TIMESTAMP , ?)", filename, tuplas);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+
     }
 }

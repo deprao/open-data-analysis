@@ -17,7 +17,7 @@ public class DepOrgaoDAO {
     JdbcTemplate template;
 
     public List<DepOrgao> findAll(){
-        String sql = "SELECT * FROM dep_trabalha_orgao LIMIT 100";
+        String sql = "SELECT * FROM dep_trabalha_orgao";
         RowMapper<DepOrgao> rm = new RowMapper<DepOrgao>(){
             @Override
             public DepOrgao mapRow(ResultSet resultSet, int i) throws SQLException {

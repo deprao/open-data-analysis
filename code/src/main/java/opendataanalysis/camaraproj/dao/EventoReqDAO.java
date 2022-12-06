@@ -17,7 +17,7 @@ public class EventoReqDAO {
     JdbcTemplate template;
 
     public List<EventoReq> findAll(){
-        String sql = "SELECT * FROM evento_requer_aprovacao LIMIT 100";
+        String sql = "SELECT * FROM evento_requer_aprovacao";
         RowMapper<EventoReq> rm = new RowMapper<EventoReq>(){
             @Override
             public EventoReq mapRow(ResultSet resultSet, int i) throws SQLException {
