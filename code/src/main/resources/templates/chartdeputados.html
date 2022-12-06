@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="author" content="João Paulo C. de Souza, Pedro W. Hernandes">
+  <title>Trabalho de Banco de Dados</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="headerTitle">
+      <h1 class="title">
+        BD 2022
+      </h1>
+      <h2 class="subtitle">
+        Deputados
+      </h2>
+    </div>
+    <div class="colorsHeader">
+      <div class="colorHeader" style="background-color: #ffdf00"></div>
+      <div class="colorHeader" style="background-color: #009c3b"></div>
+      <div class="colorHeader" style="background-color: #002776"></div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark " style="background: none;">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent"  style="background-color: none;">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" >
+        <a class="nav-link" href="/Upload">Enviar dados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Listar-cargas">Histórico de cargas</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"  style="color:#F1F1f1"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Deputados
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#222;">
+          <a class="dropdown-item" href="/Listar-Deps" style="color:#F1F1f1;">Deputados</a>
+          <a class="dropdown-item" href="/Listar-DepsPorOrgs"  style="color:#F1F1f1;">Trablaha no órgao</a>
+          <a class="dropdown-item" href="/Listar-DepOcups"  style="color:#F1F1f1;">Ocupação</a>
+          <a class="dropdown-item" href="/Listar-DepPros"  style="color:#F1F1f1;">Profissão</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Evento
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#222;">
+          <a class="dropdown-item" href="/Listar-Eventos" style="color:#F1F1f1;">Eventos</a>
+          <a class="dropdown-item" href="/Listar-PresencasEventos"  style="color:#F1F1f1;">Deputados presentes</a>
+          <a class="dropdown-item" href="/Listar-RequerimentosEventos"  style="color:#F1F1f1;">Requerimento de aprovação</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Órgão
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#222;">
+          <a class="dropdown-item" href="/Listar-Orgaos" style="color:#F1F1f1;">Órgãos</a>
+          <a class="dropdown-item" href="/Listar-EventosOrgaos"  style="color:#F1F1f1;">Órgão realiza evento</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Listar-Leg">Legislaturas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Listar-Requerimentos">Requerimentos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Listar-Votacoes">Votações</a>
+      </li>
+    </ul>
+</nav>
+<li class="nav-item dropdown" style="margin-top: -30px">
+  <a class="nav-link dropdown-toggle" href="#" id="filterDropdown" role="button"  style="color:#F1F1f1"
+     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filtros
+  </a>
+  <div class="dropdown-menu" aria-labelledby="filterDropdown" style="background-color:#222;">
+    <form action="/Listar-Deps-Filter" method="POST">
+      <input type="hidden" name="value" value="1" />
+      <input type="hidden" name="param" value="M" />
+      <a  onclick="this.parentNode.submit()" class="dropdown-item" style="color:#F1F1f1;">
+        Masculino</a>
+    </form>
+    <form action="/Listar-Deps-Filter" method="POST">
+      <input type="hidden" name="value" value="1" />
+      <input type="hidden" name="param" value="F" />
+      <a  onclick="this.parentNode.submit()" class="dropdown-item" style="color:#F1F1f1;">
+        Feminino</a>
+    </form>
+    <form action="/Listar-Deps-Filter" method="POST">
+      <input type="hidden" name="value" value="2" />
+      <input type="hidden" name="param" value="M" />
+      <a  onclick="this.parentNode.submit()" class="dropdown-item" style="color:#F1F1f1;">
+        Falecidos</a>
+    </form>
+  </div>
+</li>
+<div class="body">
+  <div  style="height: 400px; width: 100vw; display: flex; justify-content: center;">
+    <canvas id="myChart" style="height: 100px; width: 100px"></canvas>
+  </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('myChart');
+  console.log([[${chartData.Homens}]])
+  var homens = [[${chartData.Homens}]]
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Homens', 'Mulheres'],
+      datasets: [{
+        label: 'Quantidade por genero',
+        data: [homens, [[${chartData.Mulheres}]]],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+<style>
+    a{
+        text-decoration: none;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        background: #222;
+        /* background: linear-gradient(120deg, rgba(0,0,0,1) 0%, rgba(51,51,51,1) 100%); */
+        padding: 40px;
+    }
+
+    .header{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .uploadBody{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top:10%;
+        flex-direction: column;
+    }
+
+    input[type="file"] {
+        /* display: none; */
+        display: flex;
+        flex-direction: column;
+        color: #Fff;
+        margin-bottom: 10px;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+        padding: 10px;
+        background-color: #4E4E4E;
+        border-radius: 25px;
+        border: none;
+        transition: .3s;
+        color: #fff;
+        padding-left: 15px;
+        padding-right: 15px;
+        cursor: pointer;
+    }
+
+    input[type="file"]::-webkit-file-upload-button:hover{
+        padding: 10px;
+        background-color: #2E2E2E;
+        border-radius: 25px;
+        border: none;
+        padding-left: 20px;
+        padding-right: 20px;
+        transition: .3s;
+    }
+
+
+
+    label {
+        padding: 20px 10px;
+        width: 200px;
+        border-radius: 40px;
+        background-color: #333;
+        color: #FFF;
+        text-transform: uppercase;
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    label :hover{
+        transition: .3s;
+        background-color: #111;
+    }
+
+    text, button{
+        font-family: 'Nunito', sans-serif;
+    }
+
+    h1,h2,h3,h4{
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    text, h1, h2, h3, h4{
+        color: #F1F1f1
+    }
+
+    .title{
+        font-size: 30px;
+        font-weight: 700;
+        margin-right: 10px;
+    }
+
+    .subtitle{
+        font-weight: 300;
+        font-size: 30px;
+        color: rgba(255,255,255,0.8);
+    }
+
+    .identificacao{
+        font-weight: 300;
+        font-size: 16px;
+        color: rgba(255,255,255,0.8);
+    }
+
+    .nome{
+        font-weight: 700;
+        font-size: 16px;
+        color: rgba(255,255,255,1);
+    }
+
+    .headerTitle{
+        display: flex;
+        align-items: center;
+    }
+
+    .filterInput{
+        width: 250px;
+        background: none;
+        color: #FFF;
+        border: none;
+        border-bottom: solid 1px rgba(255,255,255,0.8);
+        padding: 10px;
+        outline: none;
+        transition: .3s;
+    }
+    .filterInput:hover{
+        border: none;
+        border-bottom: solid 1px rgba(255,255,255,1);
+        width: 280px;
+        transition: .3s;
+    }
+
+    .filterInput:focus{
+        border: none;
+        border-bottom: solid 1px rgba(255,255,255,1);
+        width: 280px;
+        transition: .3s;
+    }
+
+    .colorsHeader{
+        width: 100%;
+        display: flex;
+    }
+
+    .colorHeader{
+        width: 50%;
+        height: 2px;
+    }
+
+    .subheader{
+        margin-bottom: 10px;
+    }
+
+    .btnSend{
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #4E4E4E;
+        border-radius: 25px;
+        border: none;
+        transition: .3s;
+        color: #fff;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .btnSend:hover{
+        padding: 10px;
+        background-color: #2E2E2E;
+        border-radius: 25px;
+        border: none;
+        padding-left: 20px;
+        padding-right: 20px;
+        transition: .3s;
+    }
+
+    .bodyHome{
+        width: 100%;
+        height: calc(100vh - 80px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .people{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .body{
+        overflow-y: scroll;
+        height:  calc(100vh - 220px);
+        border-radius: 25px;
+        width: calc(100vw - 80px);
+    }
+
+    .body::-webkit-scrollbar{
+        display: none;
+    }
+
+    thead{
+        background-color: #fff;
+        border-radius: 4px;
+        width: calc(100vw - 80px);
+        border: none;
+    }
+
+    td{
+        color: rgba(255, 255,255, 0.8);
+        font-weight: 300;
+    }
+
+    tbody{
+        margin-top: 50px;
+    }
+
+    tbody th{
+        color: rgba(255, 255,255, 1);
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>
