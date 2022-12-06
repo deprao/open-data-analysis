@@ -102,6 +102,12 @@
             <a class="nav-link" href="/Listar-Votacoes">Votações</a>
           </li>
       </ul>
+        <form class="d-flex" role="pesquisar" action="/Listar-Deps-Filter" method="POST">
+            <input class="form-control me-2" name="param" type="search" placeholder="Search"
+                   aria-label="Search">
+            <input type="hidden" name="value" value="3" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
   </nav>
     <li class="nav-item dropdown" style="margin-top: -30px">
         <a class="nav-link dropdown-toggle" href="#" id="filterDropdown" role="button"  style="color:#F1F1f1"

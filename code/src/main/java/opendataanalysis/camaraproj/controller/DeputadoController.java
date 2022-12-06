@@ -24,11 +24,18 @@ public class DeputadoController {
     @Autowired
     DeputadoDAO dao;
 
+
     @RequestMapping(value = "/Listar-Deps", method = RequestMethod.GET)
     public String listarDeputados(Model mod){
         mod.addAttribute("deputados", dao.findAll());
 
         return "listdeputados";
+    }
+
+    @RequestMapping("/Deps-Name-Filter")
+    public String depsNameFilterRequest(){
+
+        return "depsnamefilter";
     }
 
     @RequestMapping(value = "/Listar-Deps-Filter" ,method = RequestMethod.POST)
@@ -40,6 +47,8 @@ public class DeputadoController {
             case 2:
                 mod.addAttribute("deputados", dao.findRIPDeps());
                 break;
+            case 3:
+                mod.addAttribute("deputados", dao.findByName(param));
         }
 
 

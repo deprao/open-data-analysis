@@ -40,7 +40,26 @@ public class DeputadoDAO {
     }
 
     public List<Deputado> findByName(String name){
-        String sql = "SELECT * FROM deputado WHERE nome_parlamentar LIKE '"+name+"';
+        String sql = "SELECT * FROM deputado WHERE nome_parlamentar LIKE '"+"%"+name+"%"+"' OR nome_civil LIKE '"+"%"+name+"%"+"';";
+        RowMapper<Deputado> rm = new RowMapper<Deputado>(){
+            @Override
+            public Deputado mapRow(ResultSet resultSet, int i) throws SQLException {
+                Deputado deputado = new Deputado(
+                        resultSet.getInt("id_dep"),
+                        resultSet.getString("nome_parlamentar"),
+                        resultSet.getString("nome_civil"),
+                        resultSet.getDate("data_nasc"),
+                        resultSet.getDate("data_falec"),
+                        resultSet.getString("sexo"),
+                        resultSet.getString("uf_nasc"),
+                        resultSet.getString("município_nasc"),
+                        resultSet.getInt("id_ultima_legislatura")
+                );
+                return deputado;
+            }
+        };
+
+        return template.query(sql, rm);
     }
 
     public List<Deputado> findForGenre(String genre){
